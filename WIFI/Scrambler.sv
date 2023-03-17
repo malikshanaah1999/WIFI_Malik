@@ -2,12 +2,8 @@
 And before going on to the encoder which is the first sub-block: -> Scrambler
  Scrambler is used to randomize the data before it is transmitted
 */
-// And this is where Scrambler comes in.
-/*
-the Scrambler takes the data bits that are to be transmitted and scrambles them using a 
-pseudorandom sequence generator before procceding further.
-*/
-//The Scrambler adds 127-bit sequence to the actual data.
+
+
 //And here is the design............
 
 module Scrambler(input clk, input rst, output reg [6:0]state_out, input bit_in, output bit_out, output ready);
