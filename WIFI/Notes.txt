@@ -1,0 +1,13 @@
+
+
+
+First of all, We have our TX block that contains the following sub-blocks which we'll design 
+later on:
+
+Scrambler -> Encoder -> Interleaver -> Mapper -> IFFT -> GI Adder.
+
+The output of these blocks we be added to the preamble and it's worth mentioning that the order 
+of sending them is crucial, so we need to transmit the preamble, signal, and the data. in order.
+
+After that, -> OFDM-based Modulation.
+
