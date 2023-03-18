@@ -2,7 +2,7 @@ module Scrambler(input clk, input rst,  input bit_in, output scramb_bit);
 
 	reg [6:0] state;
 	wire feedback;
-	assign feedback = (state_out[6] ^ state_out[3]);
+	assign feedback = (state[6] ^ state[3]);
 	assign scramb_bit =  (bit_in ^ feedback);
 
 	always @(posedge clk)
