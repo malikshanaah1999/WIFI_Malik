@@ -1,25 +1,15 @@
-/* 
-And before going on to the encoder which is the first sub-block: -> Scrambler
- Scrambler is used to randomize the data before it is transmitted
-*/
+module Scrambler(input clk, input rst,  input bit_in, output scramb_bit);
 
-
-//And here is the design............
-
-module Scrambler(input clk, input rst, output reg [6:0]state_out, input bit_in, output bit_out, output ready);
-//The ready signal here is to trigger the encoder once the data field randomized/Initialized
-
+	reg [6:0] state;
 	wire feedback;
-	assign feedback =  (bit_in ^ state_out[6] ^ state_out[3]);
-	assign bit_out = feedback; // Here is the bit output.
+	assign feedback = (state_out[6] ^ state_out[3]);
+	assign scramb_bit =  (bit_in ^ feedback);
 
-// THhe main operation
 	always @(posedge clk)
 	begin
 		if (rst == 1'b1) 
 			state_out <=  7'b1010000;  // The initial state.
 		else
-			state_out <= {state_out[5], state_out[4], state_out[3],state_out[2], state_out[1], state_out[0],feedback};
-            ready=1'b1;
+			state_out <= {state[6], state[5], state[4],state[3], state[2], state[1],feedback};
 	end
 endmodule
