@@ -8,7 +8,7 @@ module Scrambler(input clk, input rst,  input bit_in, output scramb_bit);
 	always @(posedge clk)
 	begin
 		if (rst == 1'b1) 
-			state <=  7'b1010000;  // The initial state.
+			state <=  7'b1111111;  // The initial state.
 		else
 			state <= {state[6], state[5], state[4],state[3], state[2], state[1],feedback};
 	end
